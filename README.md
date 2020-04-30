@@ -6,9 +6,13 @@
 User Model
 
 class User(UserMixin, Model):
+	
 	username=CharField(unique=true)
+	
 	email=CharField(unique=true)
+	
 	password=CharField()
+	
 	occupation=CharField()
 
 
@@ -17,12 +21,19 @@ class User(UserMixin, Model):
 Snake Model 
 
 class Snake(Model):
+	
 	species = charField() 
+	
 	location = CharField()
+	
 	family = CharFeild()
+	
 	average_size = IntegerFeild()
+	
 	venomous = BooleanField()
+	
 	description = TextField()
+	
 	added_by = ForeignKeyField( User, backref='snakes')
 
 
