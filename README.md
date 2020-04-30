@@ -31,7 +31,7 @@ class Snake(Model):
 SNAKE ROUTES 
 
 
-Test Route
+<!-- Test Route
 
 @app.route('/test_route/username')
 	def say_hello(username)
@@ -43,22 +43,28 @@ Snakes DUMMY Route
 
 @app.route('/', methods=['GET'])
 def snakes_index():
-	return 'Snakes resource working'
+	return 'Snakes resource working' -->
 
 
 
 Snakes Routes 
 
 POST /api/v1/snakes/<owner_id>
+
 GET /api/v1/snakes
+
 DELETE /api/v1/snakes/<id>
+
 PUT /api/v1/snakes/<id>
+
 GET /api/v1/snakes/<id>
 
 User Routes
 
 POST /api/v1/users/register
+
 GET /api/v1/users/<id>
+
 GET /api/v1/users/logged_in_user
 
 
