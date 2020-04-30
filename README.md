@@ -56,8 +56,7 @@ Snakes DUMMY Route
 def snakes_index():
 	return 'Snakes resource working' -->
 
-
-
+```
 Snakes Routes 
 
 POST /api/v1/snakes/<owner_id>
@@ -95,6 +94,7 @@ GET /api/v1/users/<id>
 GET /api/v1/users/logged_in_user
 	
 	lets me use current_user in code 
+```
 
 
 <!-- @snakes.route('/<owner_id>', methoda=['POST'])
