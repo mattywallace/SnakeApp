@@ -61,22 +61,40 @@ def snakes_index():
 Snakes Routes 
 
 POST /api/v1/snakes/<owner_id>
+	
+	creates a snake 
 
 GET /api/v1/snakes
+	
+	shows the snakes index
 
 DELETE /api/v1/snakes/<id>
 
+	deletes a snake 
+
 PUT /api/v1/snakes/<id>
 
+	updates a snakes description 
+
 GET /api/v1/snakes/<id>
+
+	shows a snake
+
+
 
 User Routes
 
 POST /api/v1/users/register
+	
+	creates a new register
 
 GET /api/v1/users/<id>
 
+	shows the user page
+
 GET /api/v1/users/logged_in_user
+	
+	lets me use current_user in code 
 
 
 <!-- @snakes.route('/<owner_id>', methoda=['POST'])
