@@ -24,7 +24,7 @@ class Snake(Model):
 	
 	species = charField() 
 	
-	location = CharField()
+	habitat = CharField()
 	
 	family = CharFeild()
 	
@@ -33,6 +33,8 @@ class Snake(Model):
 	venomous = BooleanField()
 	
 	description = TextField()
+
+	picture = CharField()
 	
 	added_by = ForeignKeyField( User, backref='snakes')
 
