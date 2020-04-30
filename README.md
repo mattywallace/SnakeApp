@@ -1,26 +1,4 @@
-----------USER STORIES---------------
 
-User can click on the login button or the signe up button 
-
-User adds a username and password to create a profile
-
-User can now click on add snake
-
-User clicks on add snake and is presented with a form 
-
-The user can enter the feilds in the form and their snake is added
- 
-Stretch --- once the user adds the snake, an api is searched by the snakes species 
-Stretch --- once the user adds the snake, an api is searched by the snakes location 
-
-The user can continue to add snakes that will all be referenced to them specficially 
-
-User can click on the edit description snake button and only the description will be able 
-to be updated and edited
-
-The user can click on the delete snake button and the snake will be deleted
-
-The user is able to click on their own profile to see their added snakes
 
 
 ---------------MODELS----------------- 
@@ -69,9 +47,22 @@ def snakes_index():
 
 
 
-Snakes CREATE Route 
+Snakes Routes 
 
-@snakes.route('/<owner_id>', methoda=['POST'])
+POST /api/v1/snakes/<owner_id>
+GET /api/v1/snakes
+DELETE /api/v1/snakes/<id>
+PUT /api/v1/snakes/<id>
+GET /api/v1/snakes/<id>
+
+User Routes
+
+POST /api/v1/users/register
+GET /api/v1/users/<id>
+GET /api/v1/users/logged_in_user
+
+
+<!-- @snakes.route('/<owner_id>', methoda=['POST'])
 @login_required
 def create_snake(owner_id):
 """ Creates a snake in the database """
@@ -169,7 +160,7 @@ snakes UPDATE route
 
 Snakes SHOW route 
 
-@snakes.route('/<id>', methods={'GET'})
+@snakes.route('/<id>', methods=['GET'])
 def show_snake(id):
 	snake = models.Snake.get_by_id(id)
 	if not current_user.is_authenticated:
@@ -282,7 +273,7 @@ def unauthorized():
 		data={'Error':'User not logged in'},
 		message'You must be logged in to access this",
 		status=401
-	), 401
+	), 401 -->
 	
 
 
