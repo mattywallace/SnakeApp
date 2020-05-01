@@ -1,6 +1,8 @@
 import models 
 
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
+
+from playhouse.shortcuts import model_to_dict
 
 snakes = Blueprint('snakes', 'snakes')
 
@@ -22,6 +24,14 @@ def create_snake():
 					description=payload['description'],
 					added_by=payload['added_by']
 				)
-	return " We have hit the snake create route -- check terminal"
+	print(new_snake)
+	print(new_snake.__dict__)
+	print(dir(new_snake))
+	snake_dict = model_to_dict(new_snake)
+	return jsonify(
+		data=snake_dict,
+		message='You have created a snake',
+		status=201
+	), 201
 
 
