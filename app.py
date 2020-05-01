@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import models
 
 DEBUG=True
 PORT=8000
@@ -14,4 +15,5 @@ def test_json():
 	return jsonify(['Matthew', 'Mark', 'Luke', 'John'])
 
 if __name__ =='__main__':
+	models.initialize()
 	app.run(debug=DEBUG, port=PORT)
