@@ -30,7 +30,11 @@ def create_snake():
 		snake = models.Snake.get(models.Snake.species == payload['species'])
 		print('this is the snake on try')
 		print(snake)
-		return print('this snake is already created')
+		return jsonify(
+			data={},
+			message='this snake already exists',
+			status=400
+		), 400
 	except models.DoesNotExist:
 		new_snake = models.Snake.create(**payload)
 		print('this is the snake on except')
