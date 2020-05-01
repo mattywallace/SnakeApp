@@ -1,6 +1,6 @@
 import models 
 
-from flask import Blueprint
+from flask import Blueprint, request
 
 snakes = Blueprint('snakes', 'snakes')
 
@@ -10,4 +10,6 @@ def snakes_index():
 
 @snakes.route('/', methods=['POST'])
 def create_snake():
-	return " We have hit the snake create route"
+	payload = request.get_json()
+	print(payload)
+	return " We have hit the snake create route -- check terminal"
