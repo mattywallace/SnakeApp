@@ -48,4 +48,16 @@ def create_snake():
 			status=201
 			), 201
 
+@snakes.route('/<id>', methods=['DELETE'])
+def delete_snake(id):
+	delete_query = models.Snake.delete().where(models.Snake.id == id)
+	num_of_rows_deleted = delete_query.execute()
+	print(num_of_rows_deleted)
+	return jsonify(
+		data={},
+		message="Successfully deleted {} snake with id {}".format(num_of_rows_deleted, id),
+		status=200,
+	), 200
 
+
+		
