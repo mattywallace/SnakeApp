@@ -5,7 +5,7 @@ DATABASE = SqliteDatabase('snakes.sqlite')
 
 
 class User(UserMixin, Model):
-	username=CharField()
+	username=CharField(unique=True)
 	email=CharField(unique=True)
 	password=CharField()
 	occupation=CharField()
@@ -22,7 +22,7 @@ class Snake(Model):
 	venomous = BooleanField()
 	description = TextField()
 	picture = CharField()
-	added_by = CharField()
+	added_by = ForeignKeyField(User, backref='snakes')
 
 	class Meta: 
 		database = DATABASE
