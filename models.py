@@ -4,14 +4,14 @@ from flask_login import UserMixin
 DATABASE = SqliteDatabase('snakes.sqlite')
 
 
-# class User(UserMixin, Model):
-# 	username=CharField(unique=True)
-# 	email=CharField(unique=True)
-# 	password=CharField()
-# 	occupation=CharField()
+class User(UserMixin, Model):
+	username=CharField()
+	email=CharField(unique=True)
+	password=CharField()
+	occupation=CharField()
 
-# 	class Meta:
-# 		datbase = DATABASE
+	class Meta:
+		database = DATABASE
 
 
 class Snake(Model):
@@ -33,6 +33,6 @@ class Snake(Model):
 def initialize(): 
 	DATABASE.connect()
 
-	DATABASE.create_tables([Snake], safe=True)
+	DATABASE.create_tables([User, Snake], safe=True)
 	print('connected with the db and created tables if they werent there')
 	DATABASE.close()
