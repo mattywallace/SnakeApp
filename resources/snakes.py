@@ -60,4 +60,27 @@ def delete_snake(id):
 	), 200
 
 
+
+
+@snakes.route('/<id>', methods=['PUT'])
+def update_snake(id):
+	payload = request.get_json()
+	update_query = models.Snake.update( 
+		description=payload['description'],
+		picture=payload['picture']
+	).where(models.Snake.id == id)
+	num_of_rows_modified = update_query.execute()
+	updated_snake = models.Snake.get_by_id(id)
+	updated_snake_dict = model_to_dict(updated_snake)
+	return jsonify(
+		data=updated_snake_dict, 
+		message=f"Successsfully updated snake with id {id}",
+		status=200
+	), 200
+
+
+
+		
+
+
 		
