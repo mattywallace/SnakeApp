@@ -114,7 +114,7 @@ def delete_snake(id):
 		      data={
 		        'error': '404 Not found'
 		      },
-		      message="There is no dog with that ID.",
+		      message="There is no snake with that ID.",
 		      status=404
 		    ), 404
 
