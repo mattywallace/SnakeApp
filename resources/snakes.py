@@ -10,18 +10,15 @@ snakes = Blueprint('snakes', 'snakes')
 
 @snakes.route('/', methods=['GET'])
 def snakes_index():
-	result = models.Snake.select()
-	print('')
-	print('result of snake select query')
-	print(result)
-	snake_dicts= [model_to_dict(snake) for snake in result]
-	for snake_dict in snake_dicts:
+	current_user_snake_dicts = [model_to_dict(snake) for snake in current_user.snakes]
+	
+	for snake_dict in current_user_snake_dicts:
 		snake_dict['added_by'].pop('password')
 	print('this is snake dicts')
-	print(snake_dicts)
+	print(current_user_snake_dicts)
 	return jsonify({
-		'data': snake_dicts,
-		'message': f" Successfully found {len(snake_dicts)} snakes",
+		'data': current_user_snake_dicts,
+		'message': f" Successfully found {len(current_user_snake_dicts)} snakes",
 		'status': 200
 	}) 
 
