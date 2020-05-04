@@ -2,7 +2,7 @@ import models
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import generate_password_hash, check_password_hash
 from playhouse.shortcuts import model_to_dict
-from flask_login import login_user
+from flask_login import login_user, current_user
 
 users = Blueprint('users', 'users')
 
@@ -89,3 +89,12 @@ def user_index():
 			user_dict.pop('password')
 		print(user_dicts)
 		return jsonify(user_dicts), 200
+
+
+
+@users.route('/logged_in_user', methods=['GET'])
+def get_logged_in_user():
+	print(current_user)
+	user_dict = model_to_dict(current_user)
+	user_dict.pop('password')
+	return jsonify (data=user_dict), 200

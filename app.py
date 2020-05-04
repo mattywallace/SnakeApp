@@ -21,6 +21,14 @@ app.secret_key = "Parseltounge"
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+@login_manager.user_loader
+def load_user(user_id):
+	try:
+		print('loading the following user')
+		user = models.User.get_by_id(user_id)
+		return user
+	except models.DoesNotExist:
+		return None
 
 CORS(snakes, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
@@ -28,7 +36,6 @@ CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
 
 app.register_blueprint(snakes, url_prefix='/api/v1/snakes')
 app.register_blueprint(users, url_prefix='/api/v1/users')
-
 
 
 
