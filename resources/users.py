@@ -20,7 +20,7 @@ def register():
 	try:
 		models.User.get(models.User.email == payload['email'])
 		return jsonify(
-				data=user_dict,
+				data={},
 				message=f"A user with {payload['email']} already exists",
 				status=401
 			), 401
@@ -39,7 +39,7 @@ def register():
 		created_user_dict.pop('password')
 		return jsonify(
 			data=created_user_dict,
-			message=f"succefully registered {reated_user_dict['username']}",
+			message=f"succefully registered {created_user_dict['username']}",
 			status=201
 		), 210
 

@@ -22,8 +22,8 @@ def snakes_index():
 	}) 
 
 
-@snakes.route('/', methods=['POST'])
-def create_snake():
+@snakes.route('/<owner_id>', methods=['POST'])
+def create_snake(owner_id):
 	payload = request.get_json()
 	print(payload)
 	try:
@@ -36,12 +36,19 @@ def create_snake():
 			status=400
 		), 400
 	except models.DoesNotExist:
-		new_snake = models.Snake.create(**payload)
-		print('this is the snake on except')
-		print(new_snake)
-		print(new_snake.__dict__)
-		print(dir(new_snake))
+		new_snake = models.Snake.create(
+			species=payload['species'],
+			family=payload['family'],
+			average_size=payload['average_size'],
+			habitat=payload['habitat'],
+			venomous=payload['venomous'],
+			description=payload['description'],
+			added_by=owner_id,
+			picture=payload['picture']
+		)
 		snake_dict = model_to_dict(new_snake)
+		print(snake_dict)
+		snake_dict['added_by'].pop('password')
 		return jsonify(
 			data=snake_dict,
 			message='You have created a snake',
