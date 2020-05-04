@@ -30,6 +30,16 @@ def load_user(user_id):
 	except models.DoesNotExist:
 		return None
 
+@login_manager.unauthorized_handler
+def unauthorized():
+	return jsonify(
+		data={
+		"error: user not logged in"
+		},
+		message="you must be logged in to access snakes",
+		status=401
+	), 401
+
 CORS(snakes, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
 
